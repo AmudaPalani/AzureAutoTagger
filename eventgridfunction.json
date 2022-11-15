@@ -11,7 +11,9 @@
         "storageAccountId": "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
         "functionName": "[concat('func-autotagger-', variables('uniqueString'))]",
         "eventGridTopic": "[concat('evt-autotagger-', variables('uniqueString'))]",
-        "eventGridSubscriptionName": "[concat('evs-autotagger-', variables('uniqueString'))]",
+        "eventGridSubscriptionName1": "[concat('evs-autotagger-rg-', variables('uniqueString'))]",
+        "eventGridSubscriptionName2": "[concat('evs-autotagger-vm-', variables('uniqueString'))]",
+        "eventGridSubscriptionName3": "[concat('evs-autotagger-aks-', variables('uniqueString'))]",
         "appInsightsName": "[concat('insights-autotagger-', variables('uniqueString'))]",
         "functionAppRepo": "https://github.com/amudapalani/AzureAutoTaggerFunction.git"
     },
@@ -135,7 +137,7 @@
             }
         },
         {
-            "name": "RGCreate",
+            "name": "[concat(variables('eventGridTopic'), '/', variables('eventGridSubscriptionName1'))]",
             "type": "Microsoft.EventGrid/systemTopics/eventSubscriptions",
             "apiVersion": "2020-04-01-preview",
             "dependsOn": [
@@ -168,7 +170,7 @@
             }
         },
         {
-            "name": "VMCreate",
+            "name": "[concat(variables('eventGridTopic'), '/', variables('eventGridSubscriptionName2'))]",
             "type": "Microsoft.EventGrid/systemTopics/eventSubscriptions",
             "apiVersion": "2020-04-01-preview",
             "dependsOn": [
@@ -201,7 +203,7 @@
             }
         },
         {
-            "name": "AKSCreate",
+            "name": "[concat(variables('eventGridTopic'), '/', variables('eventGridSubscriptionName3'))]",
             "type": "Microsoft.EventGrid/systemTopics/eventSubscriptions",
             "apiVersion": "2020-04-01-preview",
             "dependsOn": [
