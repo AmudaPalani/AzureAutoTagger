@@ -2,7 +2,7 @@
 
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Famudapalani%2FAzureAutoTagger%2Fmain%2Fazuredeploy.json)
 
-Azure AutoTagger is a lightweight, low-cost serverless solution that can easily be deployed to an Azure subscription. Once deployed Azure AutoTagger monitors for `ResourceWriteSucess` events such as resource group create, vm create and AKS create within the subscription and triggers an Azure Function to automatically apply a `ITGSO_CREATED_TIMESTAMP` and `ITGSO_CREATED_BY` tag.
+Azure AutoTagger is a lightweight, low-cost serverless solution that can easily be deployed to an Azure subscription. Once deployed Azure AutoTagger monitors for `ResourceWriteSucess` events such as resource group create, vm create and AKS create within the subscription and triggers an Azure Function to automatically apply a `ITGSO_CREATED_BY` tag to resource group/vm/AKS created. It will take upto 5-minutes from the time resource group/vm/AKS created to get this tag added.
 
 ![autotagger](/images/autotagger.png)
 
