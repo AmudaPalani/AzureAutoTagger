@@ -2,7 +2,7 @@
 
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Famudapalani%2FAzureAutoTagger%2Fmain%2Fazuredeploy.json)
 
-Azure AutoTagger is a lightweight, low-cost serverless solution that can easily be deployed to an Azure subscription. Once deployed Azure AutoTagger monitors for `ResourceWriteSucess` events within the subscription and triggers an Azure Function to automatically apply a `LastModifiedTimestamp` and `LastModifiedBy` tag.
+Azure AutoTagger is a lightweight, low-cost serverless solution that can easily be deployed to an Azure subscription. Once deployed Azure AutoTagger monitors for `ResourceWriteSucess` events such as resource group create, vm create and AKS create within the subscription and triggers an Azure Function to automatically apply a `ITGSO_CREATED_TIMESTAMP` and `ITGSO_CREATED_BY` tag.
 
 ![autotagger](/images/autotagger.png)
 
@@ -21,25 +21,3 @@ Azure AutoTagger is a lightweight, low-cost serverless solution that can easily 
 Use the **Deploy to Azure** button to easily deploy this solution in a subscription
 
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Famudapalani%2FAzureAutoTagger%2Fmain%2Fazuredeploy.json)
-
--- OR --
-
-1. Clone the GitHub repo locally
-
-```shell
-git clone https://github.com/amudapalani/AzureAutoTagger.git
-```
-
-2. Initiate an ARM Template deployment with Azure PowerShell or Azure CLI
-
-Azure PowerShell:
-
-```powershell
-New-AzDeployment -Location "East US" -TemplateFile ".\azuredeploy.json" -resourceGroupName "rg-autotagger" -Verbose
-```
-
-Azure CLI:
-
-```python
-az deployment create --location "West US" --template-file ".\azuredeploy.json" --parameters resourceGroupName=rg-autotagger
-```
